@@ -5,5 +5,6 @@ from . import models
 
 # Register your models here.
 class StatusAdmin(admin.ModelAdmin):
-    list_display    =   ('name', 'description', 'created_by', 'updated_by')
+    list_display    =   ('name', 'description', 'updated_by', 'updated_at')
+    exclude         =   ('created_by', 'updated_by')
 admin.site.register(models.Status, StatusAdmin)
