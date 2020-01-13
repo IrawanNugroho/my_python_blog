@@ -9,6 +9,7 @@ pylint = "*"
 [packages]
 psycopg2 = "*"
 psycopg2-binary = "*"
+django-crum = "*"
 
 [requires]
 python_version = "3.7"
