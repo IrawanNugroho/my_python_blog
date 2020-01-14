@@ -20,3 +20,9 @@ class ArticleImageAdmin(admin.ModelAdmin):
     exclude         =   ('created_by', 'updated_by')
     readonly_fields =   ('thumbnail',)
 admin.site.register(models.ArticleImage, ArticleImageAdmin)
+
+class ArticleAdmin(admin.ModelAdmin):
+    list_display        =   ('title', 'excerpt', 'author', 'updated_by', 'updated_at')
+    exclude             =   ('created_by', 'updated_by')
+    prepopulated_fields =   {"slug":("title",)}
+admin.site.register(models.Article, ArticleAdmin)

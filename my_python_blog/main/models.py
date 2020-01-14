@@ -19,6 +19,9 @@ class Status(models.Model):
 			self.created_by	=	user
 		self.updated_by	=	user
 		super(Status, self).save(*args, **kwargs)
+	
+	def __str__(self):
+		return self.name
 
 
 class Tag(models.Model):
@@ -39,6 +42,9 @@ class Tag(models.Model):
 			self.created_by	=	user
 		self.updated_by	=	user
 		super(Tag, self).save(*args, **kwargs)
+	
+	def __str__(self):
+		return self.name
 
 
 
@@ -62,3 +68,27 @@ class ArticleImage(models.Model):
 			self.created_by	=	user
 		self.updated_by	=	user
 		super(ArticleImage, self).save(*args, **kwargs)
+
+
+class Article(models.Model):
+	title		=	models.CharField(max_length=256)	
+	content 	=	models.TextField(blank=False)
+	excerpt		=	models.CharField(max_length=512)
+	author 		=	models.CharField(max_length=32)
+	slug 		=	models.SlugField(max_length=128)
+	active		=	models.BooleanField(default=True)
+	status 		=	models.ForeignKey(Status, on_delete=models.CASCADE)
+	tags 		=	models.ManyToManyField(Tag, blank=True)	
+	created_at	=	models.DateTimeField(auto_now_add=True)
+	created_by	=	models.ForeignKey('auth.User', blank=True, null=True, default=None, on_delete=models.CASCADE, related_name='article_created_by')
+	updated_at	=	models.DateTimeField(auto_now=True)
+	updated_by	=	models.ForeignKey('auth.User', blank=True, null=True, default=None, on_delete=models.CASCADE, related_name='article_updated_by')
+
+	def save(self, *args, **kwargs):
+		user	=	get_current_user()
+		if user and not user.pk:
+			user	=	None
+		if not self.pk:
+			self.created_by	=	user
+		self.updated_by	=	user
+		super(Article, self).save(*args, **kwargs)
