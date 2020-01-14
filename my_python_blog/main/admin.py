@@ -14,3 +14,9 @@ class TagAdmin(admin.ModelAdmin):
     exclude             =   ('created_by', 'updated_by')
     prepopulated_fields =   {"slug":("name",)}
 admin.site.register(models.Tag, TagAdmin)
+
+class ImageAdmin(admin.ModelAdmin):
+    list_display    =   ('title', 'author', 'updated_by', 'updated_at')
+    exclude         =   ('created_by', 'updated_by')
+    readonly_fields =   ('thumbnail',)
+admin.site.register(models.Image, ImageAdmin)
