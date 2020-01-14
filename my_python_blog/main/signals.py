@@ -4,15 +4,16 @@ from PIL import Image
 from django.core.files.base import ContentFile
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
-from .models import Image
+from .models import ArticleImage
 
 
 THUMBNAIL_SIZE = (300, 300)
 logger = logging.getLogger(__name__)
-@receiver(pre_save, sender = Image)
+@receiver(pre_save, sender = ArticleImage)
 
 def generate_thumbnail(sender, instance, ** kwargs):
-    logger.info("Generating thumbnail for articles %d")
+    # logger.info("Generating thumbnail for product %d", instance.product.id, )
+    logger.info("Generating thumbnail for product %d")
     image = Image.open(instance.image)
     image = image.convert("RGB")
     image.thumbnail(THUMBNAIL_SIZE, Image.ANTIALIAS)

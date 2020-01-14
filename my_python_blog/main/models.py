@@ -42,7 +42,7 @@ class Tag(models.Model):
 
 
 
-class Image(models.Model):
+class ArticleImage(models.Model):
 	title		=	models.CharField(max_length=256)
 	description	=	models.TextField(blank=True)
 	author		=	models.CharField(max_length=32)
@@ -61,4 +61,4 @@ class Image(models.Model):
 		if not self.pk:
 			self.created_by	=	user
 		self.updated_by	=	user
-		super(Image, self).save(*args, **kwargs)
+		super(ArticleImage, self).save(*args, **kwargs)
