@@ -2,6 +2,7 @@ from django.db import models
 from crum import get_current_user
 from tinymce.models import HTMLField
 
+
 # Create your models here.
 class Status(models.Model):
 	name		=	models.CharField(max_length=32)
@@ -73,7 +74,6 @@ class ArticleImage(models.Model):
 
 class Article(models.Model):
 	title		=	models.CharField(max_length=256)	
-	# content 	=	models.TextField(blank=False)
 	content 	=	HTMLField()
 	excerpt		=	models.CharField(max_length=512)
 	author 		=	models.CharField(max_length=32)

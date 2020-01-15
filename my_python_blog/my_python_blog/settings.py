@@ -155,3 +155,7 @@ LOGGING = {
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media") 
 MEDIA_URL = "/media/"
+
+TINYMCE_DEFAULT_CONFIG = {
+'theme': "advanced",
+}
