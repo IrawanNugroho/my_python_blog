@@ -21,7 +21,7 @@ class Status(models.Model):
 			self.created_by	=	user
 		self.updated_by	=	user
 		super(Status, self).save(*args, **kwargs)
-	
+
 	def __str__(self):
 		return self.name
 
@@ -44,7 +44,7 @@ class Tag(models.Model):
 			self.created_by	=	user
 		self.updated_by	=	user
 		super(Tag, self).save(*args, **kwargs)
-	
+
 	def __str__(self):
 		return self.name
 
@@ -73,14 +73,14 @@ class ArticleImage(models.Model):
 
 
 class Article(models.Model):
-	title		=	models.CharField(max_length=256)	
+	title		=	models.CharField(max_length=256)
 	content 	=	HTMLField()
 	excerpt		=	models.CharField(max_length=512)
 	author 		=	models.CharField(max_length=32)
 	slug 		=	models.SlugField(max_length=128)
 	active		=	models.BooleanField(default=True)
 	status 		=	models.ForeignKey(Status, on_delete=models.CASCADE)
-	tags 		=	models.ManyToManyField(Tag, blank=True)	
+	tags 		=	models.ManyToManyField(Tag, blank=True)
 	created_at	=	models.DateTimeField(auto_now_add=True)
 	created_by	=	models.ForeignKey('auth.User', blank=True, null=True, default=None, on_delete=models.CASCADE, related_name='article_created_by')
 	updated_at	=	models.DateTimeField(auto_now=True)
