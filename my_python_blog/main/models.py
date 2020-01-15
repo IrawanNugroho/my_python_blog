@@ -4,6 +4,11 @@ from tinymce.models import HTMLField
 
 
 # Create your models here.
+class ActiveManager(models.Model):
+	def active(self):
+		return self.filter(active=True)
+
+
 class Status(models.Model):
 	name		=	models.CharField(max_length=32)
 	description	=	models.TextField(blank=True)

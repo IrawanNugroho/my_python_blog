@@ -25,4 +25,5 @@ class ArticleAdmin(admin.ModelAdmin):
     list_display        =   ('title', 'excerpt', 'author', 'updated_by', 'updated_at')
     exclude             =   ('created_by', 'updated_by', 'active')
     prepopulated_fields =   {"slug":("title",)}
+    search_fields       =   ('title', 'content', 'author')
 admin.site.register(models.Article, ArticleAdmin)
