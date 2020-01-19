@@ -126,11 +126,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# need for ckeditor
 ROOT_PATH = os.path.dirname(__file__)
 
 STATICFILES_DIRS = [os.path.join(ROOT_PATH, 'static')]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+}
 
 LOGGING = {
     "version": 1,
