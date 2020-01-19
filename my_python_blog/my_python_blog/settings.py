@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
     'ckeditor',
+    'livereload',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'crum.CurrentRequestUserMiddleware'
+    'crum.CurrentRequestUserMiddleware',
+    'livereload.middleware.LiveReloadScript',
 ]
 
 ROOT_URLCONF = 'my_python_blog.urls'
@@ -168,7 +170,3 @@ LOGGING = {
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media") 
 MEDIA_URL = "/media/"
-
-TINYMCE_DEFAULT_CONFIG = {
-'theme': "advanced",
-}
