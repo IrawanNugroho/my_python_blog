@@ -1,6 +1,5 @@
 from django.db import models
 from crum import get_current_user
-# from tinymce.models import HTMLField
 from ckeditor.fields import RichTextField
 
 
