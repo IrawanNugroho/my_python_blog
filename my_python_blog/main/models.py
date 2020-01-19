@@ -1,6 +1,8 @@
 from django.db import models
 from crum import get_current_user
-from tinymce.models import HTMLField
+# from tinymce.models import HTMLField
+from ckeditor.fields import RichTextField
+
 
 
 # Create your models here.
@@ -79,7 +81,7 @@ class ArticleImage(models.Model):
 
 class Article(models.Model):
 	title		=	models.CharField(max_length=256)
-	content 	=	HTMLField()
+	content 	=	RichTextField()
 	excerpt		=	models.CharField(max_length=512)
 	author 		=	models.CharField(max_length=32)
 	slug 		=	models.SlugField(max_length=128)
