@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'ckeditor',
     'livereload',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -170,3 +171,4 @@ LOGGING = {
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media") 
 MEDIA_URL = "/media/"
+CKEDITOR_UPLOAD_PATH = "uploads/"

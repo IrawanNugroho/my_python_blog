@@ -1,6 +1,7 @@
 from django.db import models
 from crum import get_current_user
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 
@@ -80,7 +81,7 @@ class ArticleImage(models.Model):
 
 class Article(models.Model):
 	title		=	models.CharField(max_length=256)
-	content 	=	RichTextField()
+	content 	=	RichTextUploadingField('contents')
 	excerpt		=	models.CharField(max_length=512)
 	author 		=	models.CharField(max_length=32)
 	slug 		=	models.SlugField(max_length=128)
