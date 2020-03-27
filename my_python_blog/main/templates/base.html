@@ -121,7 +121,7 @@
   <div id="services">
     <div class="container">
         <div class="services-carousel owl-theme">
-          
+
           <div class="services-block">
             <i class="ion-ios-browsers-outline"></i>
             <span>Web Development</span>
@@ -238,21 +238,22 @@
       <div class="journal-block">
         <div class="row">
           {% if latest_article_list %}
-            <div class="col-lg-4 col-md-6">
-              <div class="journal-info">
+            {% for article in latest_article_list%}
+              <div class="col-lg-4 col-md-6">
+                <div class="journal-info">
 
-                <a href="blog-single.html"><img src="{% static "images/blog-post-1.jpg" %}" class="img-responsive" alt="img"></a>
+                  <a href="{% url "article" article.slug %}"><img src="{% static "images/blog-post-1.jpg" %}" class="img-responsive" alt="img"></a>
 
-                <div class="journal-txt">
+                  <div class="journal-txt">
 
-                  <h4><a href="blog-single.html">SO LETS MAKE THE MOST IS BEAUTIFUL</a></h4>
-                  <p class="separator">To an English person, it will seem like simplified English
-                  </p>
+                    <h4><a href="{% url "article" article.slug %}">{{ article.title }}</a></h4>
+                    <p class="separator">{{ article.excerpt }}</p>
+
+                  </div>
 
                 </div>
-
               </div>
-            </div>
+            {% endfor %}
           {% endif %}
         </div>
       </div>
